@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Customizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="/src/js/main.js" defer></script>
+    <link rel="stylesheet" href="/src/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="preview-container">
+            <div class="size-indicator width-indicator" id="width">Width 12 inch (30.48 cm)</div>
+            <div class="size-indicator height-indicator" id="height">Height 9 inch (22.86 cm)</div>
+            <div class="image-container" id="imageContainer">
+                <img class="preview-image" id="previewImage"
+                    src="https://images.unsplash.com/photo-1733287733098-11492d9920f7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            </div>
+        </div>
+        <div class="border-colors">
+            <button class="color-btn" style="border: 2px solid #000000; ">
+                <i class="fa-regular fa-image"></i>
+            </button>
+            <button class="color-btn" style="border: 2px solid #f0f0f0; ">
+                <i class="fa-regular fa-image"></i>
+            </button>
+            <button class="color-btn" style="border: 2px solid #FFEB3B; ">
+                <i class="fa-regular fa-image"></i>
+            </button>
+            <button class="color-btn" style=" border: 2px solid #E21E23; ">
+                <i class="fa-regular fa-image"></i>
+            </button>
+        </div>
+        <div class="controls">
+            <input type="file" id="fileInput" accept="image/*">
+            <button class="upload-btn upload" onclick="document.getElementById('fileInput').click()"><i
+                    class="fa-solid fa-upload"></i></button>
+            <input type="range" id="zoomRange" min="0.5" max="3" step="0.1" value="1" style="width: 200px;">
+            <button class="upload-btn download" id="downloadBtn"><i class="fa-solid fa-download"></i></button>
+            <p>Size:</p>
+
+            <button class="size-btn active" data-ratio="default/default">Default</button>
+            <button class="size-btn" data-ratio="12/9">12x9</button>
+            <button class="size-btn" data-ratio="11/11">11x11</button>
+            <button class="size-btn" data-ratio="16/12">16x12</button>
+            <button class="size-btn" data-ratio="16/16">16x16</button>
+            <button class="size-btn" data-ratio="21/15">21x15</button>
+            <button class="size-btn" data-ratio="35/23">35x23</button>
+            <button class="size-btn" data-ratio="48/36">48x36</button>
+            <button class="upload-btn" id="addTextBtn"><i class="fa-solid fa-pen-to-square"></i></button>
+        </div>
+    </div>
+
+    <!-- ===TEXT MODAL=== -->
+    <div id="textModal"
+        style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);">
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px;">
+            <h3>Customize Text</h3>
+            <label for="modalTextInput">Enter Text:</label>
+            <input type="text" id="modalTextInput" placeholder="Enter text" style="width: 100%; margin-bottom: 10px;">
+
+            <label for="textColor">Text Color:</label>
+            <input type="color" id="textColor" value="#000000" style="width: 100%; margin-bottom: 10px;">
+
+            <label for="fontStyleSelect">Font Style:</label>
+            <select id="fontStyleSelect" style="width: 100%; margin-bottom: 10px;">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Verdana">Verdana</option>
+                <option value="cursive">cursive</option>
+                <option value="fantasy">fantasy</option>
+                <option value="monospace">monospace</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                <option value="Impact">Impact</option>
+                <option value="Georgia">Georgia</option>
+            </select>
+
+            <button id="addTextModalBtn">Add Text</button>
+            <button onclick="closeTextModal()">Cancel</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
