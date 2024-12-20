@@ -62,7 +62,7 @@ body {
     width: 100%;
     height: 100%;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .image-container.default::before {
@@ -133,6 +133,7 @@ body {
 }
 
 .download {
+    display: none;
     background: #03A9F4;
     font-size: 20px;
     border: 1px solid #f0f0f0;

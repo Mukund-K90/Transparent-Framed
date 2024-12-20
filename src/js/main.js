@@ -5,6 +5,7 @@ const widthInd = document.getElementById('width');
 const heightInd = document.getElementById('height');
 const zoomRange = document.getElementById('zoomRange');
 const allSizeBtn = document.querySelectorAll('.size-btn');
+const downloadBtn = document.getElementById('downloadBtn');
 let scale = 1;
 
 let isDragging = false;
@@ -26,6 +27,7 @@ fileInput.addEventListener('change', async function (e) {
             await removeBackgroundAPI(e.target.result);
         };
         reader.readAsDataURL(file);
+        downloadBtn.style.display = 'block';
     }
 });
 
@@ -89,8 +91,6 @@ zoomRange.addEventListener('input', function () {
     updateImagePosition();
 });
 
-const downloadBtn = document.getElementById('downloadBtn');
-
 downloadBtn.addEventListener('click', () => {
     document.querySelectorAll('.resize-handle, .rotate-handle').forEach(handle => {
         handle.style.display = 'none';
@@ -113,8 +113,8 @@ allSizeBtn.forEach(btn => {
         const aspectHeight = ratio[1];
         console.log(aspectWidth, aspectHeight);
 
-        let width = 350;
-        let height = (600 * aspectHeight) / aspectWidth;
+        let width = 400;
+        let height = (650 * aspectHeight) / aspectWidth;
         console.log(width, height);
 
         const widthInd = document.getElementById('width');
@@ -305,15 +305,12 @@ function makeRotatable(element) {
     });
 }
 
-
 function updatePreview() {
     const text = document.getElementById('modalTextInput').value || 'Preview Text';
-    const color = document.getElementById('textColor').value;
 
     document.querySelectorAll('option').forEach(option => {
         const font = option.value;
         option.style.fontFamily = font;
-        option.style.color = color;
         option.textContent = `${text}`;
     });
 }
