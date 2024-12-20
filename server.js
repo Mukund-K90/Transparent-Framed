@@ -19,16 +19,15 @@ app.get('/', (req, res) => {
 })
 app.use(bodyParser.json({ limit: "10mb" }));
 
-async function removeBg(imageBlob, backgroundUrl) {
+async function removeBg(imageBlob) {
 
     const formData = new URLSearchParams();
     formData.append("size", "auto");
     formData.append("image_file_b64", imageBlob);
-    formData.append("bg_image_url", backgroundUrl)
 
     const response = await fetch("https://api.remove.bg/v1.0/removebg", {
         method: "POST",
-        headers: { "X-Api-Key": 'ciW9PgDLHbhKwFZzi99EWKda' },
+        headers: { "X-Api-Key": 'cH4zEbeK35UgU8vfDcpRzVD8' },
         body: formData,
     });
 
@@ -42,13 +41,13 @@ async function removeBg(imageBlob, backgroundUrl) {
 
 app.post('/change-bg', async (req, res) => {
     try {
-        const { imageBlob, backgroundUrl } = req.body;
+        const { imageBlob } = req.body;
 
         if (!imageBlob) {
             throw new Error('No image blob provided');
         }
 
-        const rbgResultData = await removeBg(imageBlob, backgroundUrl);
+        const rbgResultData = await removeBg(imageBlob);
 
         res.send({
             success: true,

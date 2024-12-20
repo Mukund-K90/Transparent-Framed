@@ -304,3 +304,22 @@ function makeRotatable(element) {
         document.addEventListener('mouseup', stopRotating);
     });
 }
+
+
+function updatePreview() {
+    const text = document.getElementById('modalTextInput').value || 'Preview Text';
+    const color = document.getElementById('textColor').value;
+
+    document.querySelectorAll('option').forEach(option => {
+        const font = option.value;
+        option.style.fontFamily = font;
+        option.style.color = color;
+        option.textContent = `${text}`;
+    });
+}
+
+function changeFontFamily() {
+    const selectedFont = document.getElementById('fontStyleSelect').value;
+    const textInput = document.getElementById('fontStyleSelect');
+    textInput.style.fontFamily = selectedFont;
+}
