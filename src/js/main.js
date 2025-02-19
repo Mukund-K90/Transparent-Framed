@@ -309,8 +309,6 @@ function updatePreview() {
     const text = document.getElementById('modalTextInput').value || 'Preview Text';
 
     document.querySelectorAll('option').forEach(option => {
-        const font = option.value;
-        option.style.fontFamily = font;
         option.textContent = `${text}`;
     });
 }

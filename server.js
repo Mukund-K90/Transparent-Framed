@@ -2,12 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const PORT = 1818;
+const PORT = 1822;
 const multer = require('multer');
 const upload = multer();
 const dotenv = require('dotenv');
 dotenv.config();
-const key = process.env.RBG_KEY || "ciW9PgDLHbhKwFZzi99EWKda";
 
 app.set("view engine", 'ejs');
 app.set('view engine', 'ejs');
