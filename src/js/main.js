@@ -252,13 +252,18 @@ function makeResizable(element) {
 
     resizeHandle.addEventListener('mousedown', function (e) {
         e.stopPropagation();
-        const initialWidth = element.offsetWidth;
+        const initialFontSize = parseFloat(window.getComputedStyle(element).fontSize); 
         const initialMouseX = e.clientX;
 
         function resize(e) {
-            const newSize = initialWidth + (e.clientX - initialMouseX);
-            element.style.fontSize = newSize + 'px';
+            const scaleFactor = 0.2; 
+            const newSize = initialFontSize + (e.clientX - initialMouseX) * scaleFactor;
+
+            if (newSize > 10) { 
+                element.style.fontSize = newSize + 'px';
+            }
         }
+
         function stopResizing() {
             document.removeEventListener('mousemove', resize);
             document.removeEventListener('mouseup', stopResizing);
